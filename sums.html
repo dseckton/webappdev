@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label for="input">This function takes all positive numbers preceding, and including the value input, and finds the sum.</label><br>
+        <input id="input" type="number">
+        <input type="button" id="btn" value="Add Preceeding Numbers" onClick="findSum(input.value)">
+      </form>
+      <div id="output"></div>
+      <br>
+      <form>
+        <label for="input2">This function takes the values input into the two fields and adds them together.</label><br>
+        <input id="input2" type="number">
+        <input type="button" id="btn2" value="Sum The Inputs" onClick="sumBoth(input.value, inputTwo.value)"
+      </form>
+      <div id="output2"></div>
+
+      <script>
+          var output = document.getElementById("output");
+var outputTwo = document.getElementById("output2");
+var input = document.getElementById("input");
+var inputTwo = document.getElementById("input2");
+
+
+function findSum(n) {
+  var y = 0;
+  var x = "The sum of"
+  for (i = 0; n >= i; i++) {
+    y += i;
+    x += " " + i.toString();
+    if (i < n) {
+      x += " + ";
+    } else {
+      x+= " ";
+    }
+  }
+  x += "is: "
+  output.innerHTML = x + "<strong>" + y +"</strong>";
+}
+
+function sumBoth(n, m) {
+  y = n + " + " + m + " = ";
+  n = parseInt(n);
+  m = parseInt(m);
+  
+  x = n + m;
+  
+  outputTwo.innerHTML = y + "<strong>" + x + "<strong>";
+}
+      </script>
+</body>
+</html>
