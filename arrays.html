@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const colors = [
+            "red",
+            "orange",
+            "yellow",
+            "green",
+            "blue",
+            "indigo",
+            "violet"
+        ];
+        const numbers = [
+            1,
+            3,
+            5,
+            7,
+            13,
+            16,
+            20,
+            37
+        ];
+
+        const adj = ["bold", "shy", "strong", "lazy", "round", "flat", "old"];
+        const noun = ["bike", "cat", "plate", "computer", "student", "car", "house"];
+        const verb = ["ate", "broke", "wrote", "paid", "followed", "grew", "ran"];
+
+        colors.forEach(function(item) {
+            console.log(item);
+        })
+
+        numbers.forEach((item, ind) => {
+            console.log(ind, item);
+        })
+
+        const newColors = colors.map(color => {
+            return 'light' + color;
+        })
+        const newNumbers = numbers.map(number => 2 + number)
+        console.log(newColors);
+        console.log(newNumbers);
+
+        const rando = (Math.random());
+        console.log(rando);
+
+        function random() {
+            return Math.floor(Math.random()*6);
+        }
+        console.log(random())
+
+        function buildSentence() {
+            let sentence = "The ";
+            sentence += colors[random()] + " ";
+            sentence += noun[random()] + " ";
+            sentence += verb[random()] + " ";
+            sentence += "the ";
+            sentence += adj[random()] + " ";
+            sentence += noun[random()] + ".";
+            return sentence;
+        }
+    </script>
+</body>
+</html>

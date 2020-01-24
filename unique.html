@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <textarea id="lyrics" rows="10" cols="50" placeholder="insert song lyrics"></textarea><br>
+<button onclick="unique(inp.value)">Unique Words</button>
+<div id="output"></div>
+</body>
+<script>
+    const out = document.getElementById("output");
+const inp = document.getElementById("lyrics");
+
+function unique(inp) {
+    let spa = inp.replace(/\n/g, " ");
+    console.log(spa);
+    let arr = spa.split(" ");
+    console.log(arr);
+    const words = new Set();
+    arr.forEach(function(element) {
+        words.add(element);
+    });
+    out.innerHTML = "Your input has " + words.size + " unique words!";
+}
+</script>
+</html>

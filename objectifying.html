@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        #controls {
+            display: grid;
+            width: 150px;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+        }
+        #controls button {
+            height: 50px;
+            width: 50px;
+            font-size: 25px;
+        }
+        .up {
+            grid-row: 1 / 2;
+            grid-column: 2 / 3;
+        }
+        .right {
+            grid-row: -2 / -3;
+            grid-column: -2 / -1;
+        }
+        .down {
+            grid-row: -2 / -1;
+            grid-column: 2 / 3;
+        }
+        .left {
+            grid-row: 2 / 3;
+            grid-column: 1 / 2;
+        }
+        #field {
+            background-image: url("grid.png");
+            height: 500px;
+            width: 500px;
+            position: relative;
+        }
+        #player {
+            background-color: black;
+            position: absolute;
+            top: Calc((500px / 2) - (35px / 2));
+            left: Calc((500px / 2) - (35px / 2));
+            transition-duration: .8s;
+            height: 25px;
+            width: 25px;
+            border-radius: 25px;
+            border: solid blueviolet 5px;
+        }
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <input type="text" id="input" required placeholder="Name">
+        <button onclick="newPlayer(input.value)">New Player</button>
+        <div class="hide" id="controls">
+            <button class="up hide" onclick="player.move('up')">&uArr;</button>
+            <button class="right hide" onclick="player.move('right')">&rArr;</button>
+            <button class="down hide" onclick="player.move('down')">&dArr;</button>
+            <button class="left hide" onclick="player.move('left')">&lArr;</button>
+        </div>
+        <div class="hide" id="decription">
+            <p>Welcome <span id="username"></span>! You can use these arrow buttons, or the arrow keys on your keyboard to control your beautiful dot. Try it out!</p>
+        </div>
+        <div class="hide" id="field">
+            <div id="player"></div>
+        </div>
+    </main>
+    <script>
+        const avatar = document.getElementById("player");
+        const username = document.getElementById("username");
+
+        class Player {
+            constructor(name, coords) {
+                this.name = name;
+                this.coords = coords;
+            }
+            move(direction) {
+                switch(direction) {
+                    case 'left': this.coords.x -= 1; console.log(this.coords); break;
+                    case 'right': this.coords.x += 1; console.log(this.coords); break;
+                    case 'up': this.coords.y += 1; console.log(this.coords); break;
+                    case 'down': this.coords.y -= 1; console.log(this.coords); break;
+                }
+                avatar.style.marginTop = (this.coords.y * -50) + 'px';
+                avatar.style.marginLeft = (this.coords.x * 50) + 'px';
+            }
+        }
+
+        function newPlayer(name) {
+            
+            let hidden = document.querySelectorAll(".hide");
+            hidden.forEach(function(item){
+                item.classList.remove('hide');
+            });
+            player = new Player(name, {x: 0, y: 0});
+            username.innerHTML = player.name;
+            avatar.style.marginTop = (player.coords.y * -50) + 'px';
+            avatar.style.marginLeft = (player.coords.x * 50) + 'px';
+
+            document.addEventListener("keydown", function(e) {
+            let direction = 0;
+            switch (e.keyCode) {
+                case 39: direction = 'right'; break;
+                case 38: direction = 'up'; break;
+                case 40: direction = 'down'; break;
+                case 37: direction = 'left'; break;
+            }
+            player.move(direction);
+        })
+
+            return player;
+        }
+
+        
+
+    </script>
+</body>
+</html>
