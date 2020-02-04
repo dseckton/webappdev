@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tic-Tac-Toe</title>
+    <style>
+        *, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+
+.X::before {
+    position: absolute;
+    font-size: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    content: "X"
+}
+
+.O::before {
+    position: absolute;
+    font-size: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    content: "O"
+}
+
+/* td:hover {
+  background-color: rgba(0,0,0,.2);
+}
+
+td:hover::before {
+  display: flex;
+  justify-content: center;
+  content: 'X';
+  color: rgba(0,0,0,.2);
+  font-size: 3em;
+} */
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#turnInd {
+  position: absolute;
+  height: 75px;
+  width: 450px;
+  border: solid black 1px;
+  top: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3em;
+}
+
+tr:nth-of-type(2) {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+td:nth-of-type(2) {
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+} 
+
+button {
+    position: absolute;
+  height: 75px;
+  width: 150px;
+  border: solid black 1px;
+  bottom: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="turnInd">PLAYER 1</div>
+      <table>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+      <button onClick="clearBoard()">Reset Board</button>
+      </div>
+
+    <script>
+        const click = document.querySelectorAll('td');
+        const turnInd = document.querySelector('#turnInd');
+
+        let turn = (e) => {
+            if (!e.target.classList.contains("X") && !e.target.classList.contains("O")) {
+                if (turnInd.innerHTML == "PLAYER 1") {
+                    e.target.className = "X";
+                } else {
+                    e.target.className = "O";
+                }
+                toggleTurn();
+            }
+        }
+
+        function toggleTurn() {
+            if (turnInd.innerHTML == "PLAYER 1") {
+                turnInd.innerHTML = "PLAYER 2";
+            } else if (turnInd.innerHTML == "PLAYER 2") {
+                turnInd.innerHTML = "PLAYER 1";
+            }
+        }
+
+        function clearBoard() {
+            click.forEach((cell)=>{
+                cell.className = "";
+            })
+            turnInd.innerHTML = "PLAYER 1"
+        }
+
+        for (let i = 0; i < click.length; i++) {
+            click[i].addEventListener("touchend", turn);
+            click[i].addEventListener("click", turn);
+        }
+
+
+
+    </script>
+</body>
+</html>

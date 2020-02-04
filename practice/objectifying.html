@@ -106,6 +106,7 @@
             avatar.style.marginLeft = (player.coords.x * 50) + 'px';
 
             document.addEventListener("keydown", function(e) {
+                console.log(e);
             let direction = 0;
             switch (e.keyCode) {
                 case 39: direction = 'right'; break;
