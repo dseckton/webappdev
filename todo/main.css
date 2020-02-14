@@ -1,40 +1,120 @@
-@import url(normalize.css);
 *, *::before, *::after {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  border: none;
+  font-family: sans-serif;
+  background-color: transparent;
 }
 
-fieldset {
-  display: flex;
-  flex-direction: row;
-  padding: 0;
+fieldset.task-filter {
+  position: fixed;
+  top: 0;
   width: 100%;
-  height: 60px;
 }
-
-.task-item-checkbox, .task-item-delete, .new-task-add {
+fieldset.task-filter ul {
+  display: flex;
+  list-style: none;
+  justify-content: flex-end;
+}
+fieldset.task-filter .selected {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+fieldset.task-filter .task-filter-all {
   height: 60px;
   width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.task-item-checkbox *, .task-item-delete *, .new-task-add * {
-  width: 100%;
-  height: 100%;
+fieldset.task-filter .task-filter-all:hover {
+  cursor: pointer;
 }
-
-.task-item-label {
+fieldset.task-filter .task-filter-done {
   height: 60px;
-  width: calc(100% - 60px*2);
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+fieldset.task-filter .task-filter-done:hover {
+  cursor: pointer;
+}
+fieldset.task-filter .task-filter-todo {
+  height: 60px;
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+fieldset.task-filter .task-filter-todo:hover {
+  cursor: pointer;
 }
 
-.new-task {
+fieldset.task-item {
+  font-size: 1.2em;
+}
+fieldset.task-item .task-item-check {
+  height: 60px;
+  width: 60px;
+  float: left;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+fieldset.task-item .task-item-text {
+  width: calc(100% - 60px*2);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  float: left;
+  padding: 0.4em;
+  font-size: inherit;
+}
+fieldset.task-item .task-item-delete {
+  height: 60px;
+  width: 60px;
+  float: left;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+fieldset.new-task {
+  font-size: 1.2em;
   position: fixed;
   bottom: 0;
+  width: 100%;
 }
-
-.new-task-text {
+fieldset.new-task input {
   height: 60px;
   width: calc(100% - 60px);
+  align-items: center;
+  float: left;
+  padding: 0.4em;
+  font-size: inherit;
+}
+fieldset.new-task button {
+  height: 60px;
+  width: 60px;
+  float: left;
+  font-size: 1.5em;
+}
+
+form {
+  padding: 60px 0;
+}
+
+.task-done {
+  color: gray;
+  position: relative;
+}
+.task-done::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  border-top: 2px solid gray;
+  content: "";
 }
 
 /*# sourceMappingURL=main.css.map */

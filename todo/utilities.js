@@ -6,12 +6,21 @@ export function qsa(query) {
     return document.querySelectorAll(query);
 }
 
-export function bindTouch(selector, callback) {
-    qs(selector).addEventListener('touchend', function(e) {
+export function bindTouch(element, callback) {
+    element.addEventListener('touchend', function(e) {
+        callback();
         e.preventDefault;
-        callback();
     });
-    qs(selector).addEventListener('click', function(e) {
+    element.addEventListener('click', function(e) {
         callback();
+        // e.preventDefault;
     });
+}
+
+export function getLS(key) {
+    return JSON.parse(localStorage.getItem(key));
+}
+
+export function setLS(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
 }

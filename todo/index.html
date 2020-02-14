@@ -12,27 +12,21 @@
 <body>
     <main>
         <form>
-            <fieldset class="task-item">
-                <div class="task-item-checkbox">
-                    <input type="checkbox" name="" id="">
-                    <span></span>
-                </div>
-                <div class="task-item-label">
-                    <label for="">Build a simple web app.</label>
-                </div>
-                <div class="task-item-delete">
-                    <button>&#10006;</button>
-                </div>
-            </fideldset>
+            <fieldset class="task-filter">
+                <ul>
+                    <li class="task-filter-all selected">All</li>
+                    <li class="task-filter-done">Done</li>
+                    <li class="task-filter-todo">Todo</li>
+                </ul>
+            </fieldset>
 
+            <div class="task-list">
+                
+            </div>
 
             <fieldset class="new-task">
-                <div class="new-task-text">
-                    <input type="text" name="" id="">
-                </div>
-                <div class="new-task-add">
-                    <button>&#x271A;</button>
-                </div>
+                <input type="text" name="" id="" class="new-task-text">
+                <button class="new-task-add" type="button">&#x271A;</button>
             </fieldset>
         </form>
     </main>

@@ -4,24 +4,46 @@ function saveToDo(toDo) {
 }
 
 export default class ToDo {
-    constructor() {
-        bindTouch('#newToDoButton', this.addToDo.bind(this));
+    constructor(listId) {
+        form = qs(listId);
     }
+    
     listToDos(list) {
 
     }
-    addToDo() {
-        const toDoText = qs('#newToDo');
-        saveToDo(toDoText.value);
-        this.listToDos();
+    findTask(id) {
+
+    }
+    addToDo(taskText, ) {
+        // let toDoText = qs('.new-task-text').value;
+        // const timestamp = Date.now();
+        // const newTask = {id: timestamp, text: toDoText, completed: false};
+
     }
     removeToDo(toDo) {
 
     }
-    completeToDo(toDo) {
-
+    completeToDo(id) {
+    
     }
     filterToDo(arg) {
+
+    }
+    buildSingleToDo(task) {
+        
+    }
+    buildToDoList() {
+        let taskList = this.taskList;
+        console.log(taskList);
+        for (let task of taskList) {
+            this.buildSingleToDo(task);
+        }
+        let checkboxes = qsa(".task-item-check");
+        let deletes = qsa(".task-item-delete");
+        
+        for (let checkbox of checkboxes) {
+            bindTouch(checkbox, this.completeToDo);
+        }
 
     }
 }
