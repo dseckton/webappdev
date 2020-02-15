@@ -1,49 +1,82 @@
-import { qs, qsa , bindTouch } from './utilities.js';
-function saveToDo(toDo) {
-    // console.log(`saved`, todo);
-}
+import { qs, qsa , bindTouch, getLS, setLS } from './utilities.js';
+
 
 export default class ToDo {
-    constructor(listId) {
-        form = qs(listId);
-    }
-    
-    listToDos(list) {
+    constructor() {
 
     }
-    findTask(id) {
-
+    makeNewTask(text) {
+        return {timestamp: Date.now(), todoText: text, completed: false};
     }
-    addToDo(taskText, ) {
-        // let toDoText = qs('.new-task-text').value;
-        // const timestamp = Date.now();
-        // const newTask = {id: timestamp, text: toDoText, completed: false};
-
+    appendNewTask(task) {
+        let taskStorage = getLS("Todos");
+        taskStorage.push(task);
+        return taskStorage;
     }
-    removeToDo(toDo) {
-
+    setNewStorage(tasklist) {
+        setLS("Todos", tasklist);
     }
-    completeToDo(id) {
-    
-    }
-    filterToDo(arg) {
-
-    }
-    buildSingleToDo(task) {
-        
-    }
-    buildToDoList() {
-        let taskList = this.taskList;
-        console.log(taskList);
-        for (let task of taskList) {
-            this.buildSingleToDo(task);
+    makeTaskList(tasklist) {
+        const taskContainer = qs(".task-list");
+        taskContainer.innerHTML = "";
+        for (let task of tasklist) {
+            let check = "";
+            let checkClass = ""
+            if (task.completed) { check = "✔"; checkClass = "task-done" }
+            taskContainer.innerHTML += `
+                <fieldset class="task-item">
+                    <button type="button" class="task-item-check" data-taskid="${task.timestamp}">${check}</button>
+                    <label for="" class="task-item-text ${checkClass}">${task.todoText}</label>
+                    <button type="button" class="task-item-delete" data-taskid="${task.timestamp}">✖</button>
+                </fieldset>
+            `
         }
-        let checkboxes = qsa(".task-item-check");
-        let deletes = qsa(".task-item-delete");
-        
-        for (let checkbox of checkboxes) {
-            bindTouch(checkbox, this.completeToDo);
+        let completeBtns = qsa(".task-item-check");
+        for (let btn of completeBtns) {
+            bindTouch(btn, () => {
+                this.findTaskComp(btn.dataset.taskid);
+            });
         }
-
+        let deleteBtns = qsa(".task-item-delete");
+        for (let btn of deleteBtns) {
+            bindTouch(btn, () => {
+                this.findTaskDel(btn.dataset.taskid);
+            });
+        }
     }
+    findTaskComp(taskId) {
+        let taskStorage = getLS("Todos");
+        for (let i = 0; i < taskStorage.length; i++) {
+            if (taskStorage[i].timestamp == taskId) {
+                taskStorage[i].completed === true ? taskStorage[i].completed = false : taskStorage[i].completed = true;
+                setLS("Todos", taskStorage);
+                this.makeTaskList(getLS("Todos"));
+                return;
+            }
+        }
+    }
+    findTaskDel(taskId) {
+        let taskStorage = getLS("Todos");
+        for (let i = 0; i < taskStorage.length; i++) {
+            if (taskStorage[i].timestamp == taskId) {
+                taskStorage.splice(i, 1);
+                setLS("Todos", taskStorage);
+                this.makeTaskList(getLS("Todos"));
+                return;
+            }
+        }
+    }
+    showDone(taskList) {
+        let doneTasks = taskList.filter(function(task) {
+            return task.completed;
+        });
+        return doneTasks;
+    }
+    showTodo(taskList) {
+        let todoTasks = taskList.filter(function(task) {
+            return task.completed === false;
+        });
+        return todoTasks;
+    }
+
 }
