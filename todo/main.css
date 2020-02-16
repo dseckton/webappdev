@@ -61,6 +61,16 @@ fieldset.task-item .task-item-check {
   float: left;
   font-size: 1.5em;
   cursor: pointer;
+  position: relative;
+}
+fieldset.task-item .task-item-check::before {
+  height: calc(.5*60px);
+  width: calc(.5*60px);
+  content: "";
+  border: solid black 1px;
+  position: absolute;
+  top: 15px;
+  left: 15px;
 }
 fieldset.task-item .task-item-text {
   width: calc(100% - 60px*2);
