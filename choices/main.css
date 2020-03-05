@@ -1,0 +1,34 @@
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+div {
+  border: solid purple 1px;
+}
+
+.description {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-flow: column nowrap;
+  position: relative;
+}
+
+.choice {
+  width: 100%;
+  height: 50%;
+}
+
+/*# sourceMappingURL=main.css.map */

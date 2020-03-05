@@ -1,0 +1,38 @@
+*, *::before, *::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+img {
+  border: solid black 1px;
+  width: 50px;
+  height: 50px;
+}
+
+.nav-menu {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  width: 100%;
+  list-style-type: none;
+}
+
+.nav-menu-item {
+  border: solid black 1px;
+  flex: 1 1 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav-menu-item a {
+  padding: 1em;
+  display: block;
+  text-align: center;
+}
+
+/*# sourceMappingURL=main.css.map */
