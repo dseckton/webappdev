@@ -22,7 +22,7 @@ const filterTodo = qs(".task-filter-todo");
 
 myTodo.makeTaskList(getLS("Todos"));
 
-bindTouch(newAddBtn, function() {
+bindTouch(newAddBtn, () => {
     myTodo.setNewStorage(myTodo.appendNewTask(myTodo.makeNewTask(newText.value)));
     newText.value = "";
     myTodo.makeTaskList(getLS("Todos"));

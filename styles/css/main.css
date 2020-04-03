@@ -1,0 +1,173 @@
+*, *::before, *::after {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: none;
+  font-family: sans-serif;
+  background-color: transparent;
+}
+
+fieldset.task-filter {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+fieldset.task-filter ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+fieldset.task-filter .selected {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+fieldset.task-filter .task-filter-all {
+  height: 60px;
+  width: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+fieldset.task-filter .task-filter-all:hover {
+  cursor: pointer;
+}
+
+fieldset.task-filter .task-filter-done {
+  height: 60px;
+  width: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+fieldset.task-filter .task-filter-done:hover {
+  cursor: pointer;
+}
+
+fieldset.task-filter .task-filter-todo {
+  height: 60px;
+  width: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+fieldset.task-filter .task-filter-todo:hover {
+  cursor: pointer;
+}
+
+fieldset.task-item {
+  font-size: 1.2em;
+}
+
+fieldset.task-item .task-item-check {
+  height: 60px;
+  width: 60px;
+  float: left;
+  font-size: 1.5em;
+  cursor: pointer;
+  position: relative;
+}
+
+fieldset.task-item .task-item-check::before {
+  height: calc(.5*60px);
+  width: calc(.5*60px);
+  content: '';
+  border: solid black 1px;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+fieldset.task-item .task-item-text {
+  width: calc(100% - 60px*2);
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  float: left;
+  padding: .4em;
+  font-size: inherit;
+}
+
+fieldset.task-item .task-item-delete {
+  height: 60px;
+  width: 60px;
+  float: left;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+fieldset.new-task {
+  font-size: 1.2em;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+fieldset.new-task input {
+  height: 60px;
+  width: calc(100% - 60px);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  float: left;
+  padding: .4em;
+  font-size: inherit;
+}
+
+fieldset.new-task button {
+  height: 60px;
+  width: 60px;
+  float: left;
+  font-size: 1.5em;
+}
+
+form {
+  padding: 60px 0;
+}
+
+.task-done {
+  color: gray;
+  position: relative;
+}
+
+.task-done::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  border-top: 2px solid gray;
+  content: '';
+}
+/*# sourceMappingURL=main.css.map */
